@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edgar Santana - Portfolio Interactivo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Chosen Palette: Slate (neutrals) as base, Blue (trust/tech) and Emerald (finance/growth) as accents. -->
+    <style>
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #2563eb;
+            transform: translateY(-2px);
+        }
+        .tab-active {
+            background-color: #1e40af;
+            color: white;
+        }
+        .tab-inactive {
+            background-color: #e2e8f0;
+            color: #475569;
+        }
+        /* Transiciones suaves para el modal */
+        #imageModal {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased leading-relaxed relative">
+
+    <nav class="fixed w-full z-40 glass-panel shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 font-bold text-xl text-slate-900 tracking-tight">
+                    ES<span class="text-blue-600">.Analytics</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="nav-link text-sm font-semibold text-slate-600">Inicio</a>
+                    <a href="#expertise" class="nav-link text-sm font-semibold text-slate-600">Expertise</a>
+                    <a href="#experiencia" class="nav-link text-sm font-semibold text-slate-600">Experiencia</a>
+                    <a href="#casos" class="nav-link text-sm font-semibold text-slate-600">Casos de Estudio</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section id="inicio" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2 space-y-6">
+                <div class="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-bold tracking-wide shadow-sm">
+                    &#128200; Conectando la Estrategia de Negocio con la Ingeniería de Datos
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+                    Edgar Santana Ramírez
+                </h1>
+                <h2 class="text-2xl font-bold text-slate-600">
+                    Analista de Business Intelligence <br> 
+                    <span class="text-blue-600">Especialista en Power Platform</span> | Experto en Excel & FP&A
+                </h2>
+                <p class="text-lg text-slate-600">
+                    Licenciado en Administración de Empresas con una obsesión por la eficiencia operativa y la toma de decisiones basada en datos. Me especializo en rescatar empresas del caos de los datos fragmentados, transformando procesos manuales lentos en sistemas automatizados de inteligencia de negocios.
+                </p>
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="#casos" class="px-6 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-lg hover:bg-blue-700 transition transform hover:-translate-y-1">Ver Casos de Estudio</a>
+                    <a href="mailto:edgal31.95@gmail.com" class="px-6 py-3 bg-white text-blue-600 border border-blue-600 font-bold rounded-lg shadow hover:bg-blue-50 transition">Contactar</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 w-full">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition">
+                        <div class="text-3xl mb-2">&#128202;</div>
+                        <h3 class="font-bold text-slate-900">Centralización (FP&A)</h3>
+                        <p class="text-sm text-slate-500 mt-2">Transformo silos en "Single Sources of Truth" con Power BI y Power Pivot.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition">
+                        <div class="text-3xl mb-2">&#9881;&#65039;</div>
+                        <h3 class="font-bold text-slate-900">Automatización (RPA)</h3>
+                        <p class="text-sm text-slate-500 mt-2">Bots en Power Automate para extraer y procesar información (ej. SAP) con un clic.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition">
+                        <div class="text-3xl mb-2">&#128241;</div>
+                        <h3 class="font-bold text-slate-900">Desarrollo Low-Code</h3>
+                        <p class="text-sm text-slate-500 mt-2">Apps personalizadas en Power Apps para digitalizar operaciones y trazabilidad.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition">
+                        <div class="text-3xl mb-2">&#128302;</div>
+                        <h3 class="font-bold text-slate-900">Análisis Predictivo</h3>
+                        <p class="text-sm text-slate-500 mt-2">Modelos estadísticos para proyectar ventas y presupuestos antes del cierre.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="expertise" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-3xl font-extrabold text-slate-900">Análisis Cuantitativo de Habilidades</h2>
+                    <p class="mt-4 text-lg text-slate-600">
+                        Esta sección traduce mi perfil técnico en métricas visuales. Aquí se expone la sólida base de mis competencias financieras (Excel/Administración) y cómo se potencian mediante el uso de herramientas tecnológicas para generar un impacto directo (ROI en tiempo) en el negocio.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-inner">
+                        <h3 class="text-xl font-bold text-center text-slate-800 mb-6">Distribución de Competencias (Negocio vs Tech)</h3>
+                        <div class="chart-container">
+                            <canvas id="skillsRadarChart"></canvas>
+                        </div>
+                        <p class="text-sm text-center text-slate-500 mt-4">Un perfil híbrido cimentado en el entendimiento financiero avanzado y potenciado por Business Intelligence.</p>
+                    </div>
+
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-inner">
+                        <h3 class="text-xl font-bold text-center text-slate-800 mb-6">Impacto de Automatización (Horas ahorradas/mes)</h3>
+                        <div class="chart-container">
+                            <canvas id="impactBarChart"></canvas>
+                        </div>
+                        <p class="text-sm text-center text-slate-500 mt-4">Estimación del tiempo operativo recuperado mediante la implementación de soluciones automatizadas en proyectos recientes.</p>
+                    </div>
+                </div>
+
+                <div class="mt-12 flex flex-wrap justify-center gap-3">
+                    <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-semibold border border-slate-200 shadow-sm"><span class="text-amber-500">&#9733;</span> Excel Avanzado & VBA (Experto)</span>
+                    <span class="px-4 py-2 bg-emerald-50 text-emerald-700 rounded-lg text-sm font-semibold border border-emerald-200">FP&A</span>
+                    <span class="px-4 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm font-semibold border border-blue-200">Power BI</span>
+                    <span class="px-4 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm font-semibold border border-blue-200">Power Apps</span>
+                    <span class="px-4 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm font-semibold border border-blue-200">Power Automate</span>
+                    <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-semibold border border-slate-200">Data Modeling (DAX/M)</span>
+                    <span class="px-4 py-2 bg-emerald-50 text-emerald-700 rounded-lg text-sm font-semibold border border-emerald-200">SAP ERP (SD/MM)</span>
+                    <span class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg text-sm font-semibold border border-slate-200">SQL Básico</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiencia" class="py-20 bg-slate-50 border-y border-slate-200">
+            <!-- ... (Sección de experiencia permanece igual) ... -->
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-12 text-center md:text-left">
+                    <h2 class="text-3xl font-extrabold text-slate-900">Trayectoria Profesional</h2>
+                    <p class="mt-4 text-lg text-slate-600">
+                        Un recorrido por mi experiencia corporativa, destacando roles enfocados en el análisis comercial, la gestión de la cadena de suministro y la implementación de sistemas empresariales.
+                    </p>
+                </div>
+
+                <div class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+                    
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-600 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            &#128188;
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="font-bold text-slate-900 text-lg">Analista Comercial</h3>
+                                <span class="text-sm font-semibold text-blue-600">Ene 2024 - Actual</span>
+                            </div>
+                            <h4 class="text-sm font-medium text-slate-500 mb-4">Terpel S. A.</h4>
+                            <ul class="text-sm text-slate-600 space-y-2">
+                                <li>&#8226; Gestión y análisis de recaudo de cartera.</li>
+                                <li>&#8226; Elaboración y control de presupuestos y análisis financiero.</li>
+                                <li>&#8226; Desarrollo de dashboards para monitoreo de KPIs comerciales.</li>
+                                <li>&#8226; Liderazgo de pruebas funcionales para implementación SAP (SD y MM).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-400 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            &#9881;&#65039;
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="font-bold text-slate-900 text-lg">Técnico Operaciones</h3>
+                                <span class="text-sm font-semibold text-slate-500">May 2022 - Ene 2024</span>
+                            </div>
+                            <h4 class="text-sm font-medium text-slate-500 mb-4">Terpel S. A.</h4>
+                            <ul class="text-sm text-slate-600 space-y-2">
+                                <li>&#8226; Encargado de inventario y re-aprovisionamiento de combustible de aviación.</li>
+                                <li>&#8226; Optimización operativa en procesos de supply chain.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-400 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            &#128202;
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="font-bold text-slate-900 text-lg">Analista CPO</h3>
+                                <span class="text-sm font-semibold text-slate-500">Sep 2021 - Feb 2022</span>
+                            </div>
+                            <h4 class="text-sm font-medium text-slate-500 mb-4">Grupo Ramos</h4>
+                            <ul class="text-sm text-slate-600 space-y-2">
+                                <li>&#8226; Análisis y presentación de resultados del Departamento de Campañas, Promociones y Ofertas (CPO).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="casos" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-3xl font-extrabold text-slate-900">Portafolio & Casos de Estudio</h2>
+                    <p class="mt-4 text-lg text-slate-600">
+                        Haz clic en la imagen de cada proyecto para ver la interfaz en pantalla completa, o despliega los detalles para entender el reto de negocio y los resultados obtenidos.
+                    </p>
+                </div>
+
+                <div class="flex justify-center flex-wrap gap-2 mb-10" id="portfolio-filters">
+                    <!-- Filtros generados por JS -->
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="portfolio-grid">
+                    <!-- Tarjetas generadas por JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal (Lightbox) para las imágenes -->
+    <div id="imageModal" class="fixed inset-0 z-[100] hidden bg-slate-900 bg-opacity-95 flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="relative max-w-6xl w-full bg-white rounded-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+            <!-- Header del Modal -->
+            <div class="flex justify-between items-center p-4 bg-slate-900 text-white border-b border-slate-700">
+                <h3 class="font-bold text-lg truncate pr-4" id="modalTitle">Título del Proyecto</h3>
+                <button onclick="closeModal()" class="text-slate-300 hover:text-white bg-slate-800 hover:bg-red-600 rounded-full w-8 h-8 flex items-center justify-center font-bold transition-colors">
+                    &#10005;
+                </button>
+            </div>
+            <!-- Contenedor de la Imagen -->
+            <div class="p-4 bg-slate-100 flex-1 overflow-auto flex items-center justify-center relative">
+                <div id="loadingSpinner" class="absolute text-slate-400 font-bold hidden">Cargando imagen...</div>
+                <img id="modalImage" src="" alt="Vista ampliada" class="max-w-full h-auto max-h-[75vh] object-contain shadow-lg border border-slate-200" onload="document.getElementById('loadingSpinner').classList.add('hidden')">
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-slate-900 text-slate-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="text-2xl font-bold text-white mb-4">ES<span class="text-blue-500">.Analytics</span></div>
+            <p class="mb-6 text-slate-400">Transformando datos en decisiones estratégicas rentables.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://www.linkedin.com/in/edgar-santana-ramirez/" target="_blank" class="hover:text-white transition">&#128188; LinkedIn</a>
+                <a href="mailto:edgal31.95@gmail.com" class="hover:text-white transition">&#128231; Email</a>
+                <a href="tel:8293367075" class="hover:text-white transition">&#128241; 829-336-7075</a>
+            </div>
+            <p class="mt-8 text-sm text-slate-500">&copy; 2026 Edgar Santana Ramírez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navegación suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Gráfico de Radar
+        const radarCtx = document.getElementById('skillsRadarChart').getContext('2d');
+        new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Excel Avanzado & VBA', 'FP&A & Presupuestos', 'BI & Visualización', 'Data Modeling (DAX)', 'Automatización (RPA)', 'Desarrollo Low-Code'],
+                datasets: [{
+                    label: 'Nivel de Competencia',
+                    data: [98, 92, 82, 80, 75, 70],
+                    backgroundColor: 'rgba(37, 99, 235, 0.2)',
+                    borderColor: 'rgba(37, 99, 235, 1)',
+                    pointBackgroundColor: 'rgba(37, 99, 235, 1)',
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: 'rgba(37, 99, 235, 1)'
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                        grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                        pointLabels: { font: { family: "'Inter', sans-serif", size: 11 }, color: '#475569' },
+                        ticks: { display: false, min: 0, max: 100 }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) { return context.raw + '/100'; }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Barras
+        const barCtx = document.getElementById('impactBarChart').getContext('2d');
+        new Chart(barCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Consolidación FP&A', 'Reportes SAP', 'Gestión Licitaciones', 'Seguimiento Cartera'],
+                datasets: [{
+                    label: 'Horas Ahorradas Mensualmente',
+                    data: [45, 30, 25, 40],
+                    backgroundColor: [
+                        'rgba(16, 185, 129, 0.8)',
+                        'rgba(37, 99, 235, 0.8)',
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(99, 102, 241, 0.8)'
+                    ],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: { color: 'rgba(0, 0, 0, 0.05)' },
+                        title: { display: true, text: 'Horas / Mes' }
+                    },
+                    x: {
+                        grid: { display: false },
+                        ticks: {
+                            callback: function(val, index) {
+                                let label = this.getLabelForValue(val);
+                                return label.length > 12 ? label.substr(0, 12) + '...' : label;
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            title: function(context) { return context[0].label; },
+                            label: function(context) { return context.raw + ' horas operativas ahorradas'; }
+                        }
+                    }
+                }
+            }
+        });
+
+        // ==========================================
+        // BASE DE DATOS DEL PORTAFOLIO
+        // ==========================================
+        // NOTA PARA EDGAR: Reemplaza las URLs en la propiedad "imageUrl" 
+        // con los enlaces a tus propias capturas de pantalla de tus proyectos.
+        // ==========================================
+        const portfolioData = [
+            {
+                id: 1,
+                title: "Sistema de Gestión de Licitaciones B2B",
+                category: "Power Apps",
+                icon: "&#128241;",
+                color: "blue",
+                imageUrl: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=1000",
+                challenge: "La documentación de licitaciones estaba dispersa y la falta de alertas causaba el riesgo de perder oportunidades de negocio por vencimientos.",
+                solution: "Desarrollé una aplicación corporativa en Power Apps integrada con SharePoint para centralizar pliegos legales. Implementé lógica de categorización (Vigente, Por Vencer, Vencida) y un motor RPA en Power Automate que envía alertas proactivas a los ejecutivos días antes del cierre.",
+                result: "100% de visibilidad móvil para ejecutivos y cero licitaciones perdidas por errores de calendario."
+            },
+            {
+                id: 2,
+                title: "Data Hub Comercial y Motor Predictivo FP&A",
+                category: "Data Modeling",
+                icon: "&#128200;",
+                color: "emerald",
+                imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
+                challenge: "Consolidar ventas reales, presupuestos (Budget) y estimaciones (Forecast) era un proceso manual de días, impidiendo análisis de variaciones antes del cierre de mes.",
+                solution: "Diseñé un modelo de datos robusto (Star Schema) en Power Pivot conectando múltiples ciclos fiscales. Desarrollé métricas DAX para calcular cumplimiento vs. presupuesto y proyecciones de consumo de clientes (YoY, MoM).",
+                result: "Reducción de la carga de trabajo en un 80% y transición de un análisis reactivo a uno predictivo, permitiendo ajustes estratégicos en la segunda semana de cada mes."
+            },
+            {
+                id: 3,
+                title: "Dashboard Avanzado de Cuentas por Cobrar",
+                category: "Power BI",
+                icon: "&#128202;",
+                color: "indigo",
+                imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000",
+                challenge: "La gestión de cobros B2B era reactiva. Finanzas no podía anticipar facturas por vencer ni el impacto en el flujo de caja.",
+                solution: "Construí un ecosistema híbrido (Power BI para Alta Gerencia, Power Pivot para Operativos). El sistema clasifica el aging de la deuda (tramos de 1-15, 16-30 días) y proyecta saldos basándose en el comportamiento de consumo logístico del cliente.",
+                result: "Reducción drástica de la morosidad al permitir que el equipo contacte a los clientes antes del vencimiento de la factura."
+            },
+            {
+                id: 4,
+                title: "Dashboard de Compras SAP: Actualización a Un Clic",
+                category: "Automatización / ETL",
+                icon: "&#9881;&#65039;",
+                color: "slate",
+                imageUrl: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=1000",
+                challenge: "Generar el reporte de compras requería extraer múltiples archivos de SAP y consolidarlos a mano, sin visibilidad clara del gasto por departamento.",
+                solution: "Diseñé un pipeline ETL usando Power Query que lee automáticamente los extractos crudos de SAP desde una carpeta local. El modelo limpia, normaliza y alimenta un dashboard interactivo que monitorea órdenes urgentes y contratos marco.",
+                result: "El proceso pasó de requerir horas de trabajo a actualizarse con 'un solo clic', entregando a la gerencia control total del presupuesto operativo en tiempo real."
+            }
+        ];
+
+        const state = { activeFilter: 'Todos' };
+        const categories = ['Todos', ...new Set(portfolioData.map(item => item.category))];
+        const filterContainer = document.getElementById('portfolio-filters');
+        const gridContainer = document.getElementById('portfolio-grid');
+
+        // Renderizar Filtros
+        function renderFilters() {
+            filterContainer.innerHTML = '';
+            categories.forEach(cat => {
+                const btn = document.createElement('button');
+                btn.textContent = cat;
+                btn.className = `px-4 py-2 rounded-full text-sm font-semibold transition ${state.activeFilter === cat ? 'tab-active shadow' : 'tab-inactive hover:bg-slate-300'}`;
+                btn.onclick = () => {
+                    state.activeFilter = cat;
+                    renderFilters();
+                    renderGrid();
+                };
+                filterContainer.appendChild(btn);
+            });
+        }
+
+        // Renderizar Tarjetas del Portafolio
+        function renderGrid() {
+            gridContainer.innerHTML = '';
+            const filteredData = state.activeFilter === 'Todos' 
+                ? portfolioData 
+                : portfolioData.filter(item => item.category === state.activeFilter);
+
+            filteredData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = `bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition duration-300 flex flex-col`;
+                
+                // Construcción del HTML de la tarjeta (Imagen + Botones + Acordeón)
+                card.innerHTML = `
+                    <!-- Área de la Imagen (Thumbnail) -->
+                    <div class="relative h-56 overflow-hidden group cursor-pointer border-b border-slate-200" onclick="openModal('${item.imageUrl}', '${item.title}')">
+                        <img src="${item.imageUrl}" alt="${item.title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                        <div class="absolute inset-0 bg-slate-900 bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
+                            <span class="bg-blue-600 text-white px-5 py-2 rounded-lg font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg transform translate-y-4 group-hover:translate-y-0">
+                                &#128269; Ver Pantalla Completa
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Encabezado de la tarjeta (Click para ver detalles de texto) -->
+                    <div class="p-5 border-b border-slate-100 bg-slate-50 flex items-center justify-between cursor-pointer hover:bg-slate-100 transition" onclick="toggleDetails(${item.id})">
+                        <div class="flex items-center space-x-3">
+                            <div class="text-2xl">${item.icon}</div>
+                            <div>
+                                <h3 class="font-bold text-slate-900 text-lg leading-tight">${item.title}</h3>
+                                <span class="text-xs font-bold text-${item.color}-600 uppercase tracking-wider">${item.category}</span>
+                            </div>
+                        </div>
+                        <div class="text-slate-400 text-xl transition-transform" id="icon-${item.id}">&#43;</div>
+                    </div>
+
+                    <!-- Cuerpo de detalles (Acordeón Oculto) -->
+                    <div class="p-6 hidden flex-col gap-4 bg-white" id="details-${item.id}">
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wide mb-1 flex items-center"><span class="mr-2 text-red-500">&#9888;&#65039;</span> El Reto</h4>
+                            <p class="text-slate-600 text-sm">${item.challenge}</p>
+                        </div>
+                        <div class="pl-4 border-l-2 border-blue-400">
+                            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wide mb-1 flex items-center"><span class="mr-2 text-blue-500">&#128161;</span> La Solución</h4>
+                            <p class="text-slate-600 text-sm">${item.solution}</p>
+                        </div>
+                        <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-100 mt-2">
+                            <h4 class="text-sm font-bold text-emerald-900 uppercase tracking-wide mb-1 flex items-center"><span class="mr-2 text-emerald-600">&#127919;</span> Resultado</h4>
+                            <p class="text-emerald-800 text-sm font-medium">${item.result}</p>
+                        </div>
+                    </div>
+                `;
+                gridContainer.appendChild(card);
+            });
+        }
+
+        // Lógica del Acordeón de Texto
+        window.toggleDetails = function(id) {
+            const detailsElement = document.getElementById(`details-${id}`);
+            const iconElement = document.getElementById(`icon-${id}`);
+            
+            if (detailsElement.classList.contains('hidden')) {
+                detailsElement.classList.remove('hidden');
+                detailsElement.classList.add('flex');
+                iconElement.innerHTML = '&#8722;'; // Signo de menos
+            } else {
+                detailsElement.classList.add('hidden');
+                detailsElement.classList.remove('flex');
+                iconElement.innerHTML = '&#43;'; // Signo de más
+            }
+        };
+
+        // ==========================================
+        // LÓGICA DEL MODAL (LIGHTBOX) DE IMÁGENES
+        // ==========================================
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+
+        window.openModal = function(imageSrc, title) {
+            loadingSpinner.classList.remove('hidden'); // Mostrar cargador
+            modalImg.src = imageSrc;
+            modalTitle.innerText = title;
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Evitar scroll del fondo
+        };
+
+        window.closeModal = function() {
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+            setTimeout(() => { modalImg.src = ''; }, 300); // Limpiar imagen después de animación
+        };
+
+        // Cerrar modal al hacer clic en el fondo oscuro
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal || e.target.parentElement === modal) {
+                closeModal();
+            }
+        });
+
+        // Cerrar modal con la tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        // Inicializar la página
+        renderFilters();
+        renderGrid();
+    </script>
+</body>
+</html>
